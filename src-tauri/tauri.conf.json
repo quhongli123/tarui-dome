@@ -53,6 +53,7 @@
       "signingIdentity": null,
       "entitlements": null
     },
+    "pubkey": "dummy-pubkey-for-build",
     "publisher": "shaonhuang Publisher",
     "copyright": "Copyright 2024",
     "icon": [
