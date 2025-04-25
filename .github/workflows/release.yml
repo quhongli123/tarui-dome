@@ -64,10 +64,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Add SENTRY_DSN and VITE_UPDATER_ACTIVE to .env
-        run: |
-          echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
-          echo "VITE_UPDATER_ACTIVE=true" >> .env
+      # - name: Add SENTRY_DSN and VITE_UPDATER_ACTIVE to .env
+      #   run: |
+      #     echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
+      #     echo "VITE_UPDATER_ACTIVE=true" >> .env
 
       - name: Tauri build
         uses: tauri-apps/tauri-action@v0
@@ -128,10 +128,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Add SENTRY_DSN and VITE_UPDATER_ACTIVE to .env
-        run: |
-          echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
-          echo "VITE_UPDATER_ACTIVE=true" >> .env
+      # - name: Add SENTRY_DSN and VITE_UPDATER_ACTIVE to .env
+      #   run: |
+      #     echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
+      #     echo "VITE_UPDATER_ACTIVE=true" >> .env
 
       - name: 'Setup for linux'
         run: |-
