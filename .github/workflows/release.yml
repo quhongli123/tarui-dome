@@ -3,9 +3,6 @@ name: Release Build
 on:
   workflow_dispatch:
 permissions: write-all
-env:
-  CARGO_INCREMENTAL: 0
-  RUST_BACKTRACE: short
 
 jobs:
   release:
@@ -61,8 +58,6 @@ jobs:
         run: |
           pnpm i
           pnpm check ${{ matrix.target }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add SENTRY_DSN and VITE_UPDATER_ACTIVE to .env
         run: |
@@ -71,11 +66,6 @@ jobs:
 
       - name: Tauri build
         uses: tauri-apps/tauri-action@v0
-        env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
           tagName: v__VERSION__
           releaseName: 'V2rayX v__VERSION__'
@@ -125,8 +115,6 @@ jobs:
         run: |
           pnpm i
           pnpm check ${{ matrix.target }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add SENTRY_DSN and VITE_UPDATER_ACTIVE to .env
         run: |
@@ -187,10 +175,6 @@ jobs:
             export PKG_CONFIG_SYSROOT_DIR=/usr/arm-linux-gnueabihf/
           fi
           pnpm build --target ${{ matrix.target }}
-        env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
       - name: Get Version
         run: |
@@ -232,5 +216,3 @@ jobs:
 
       - name: Release updater file
         run: pnpm updater
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -73,7 +73,7 @@
         "depends": []
       }
     },
-    "createUpdaterArtifacts": true
+    "createUpdaterArtifacts": false
   },
   "plugins": {
     "sql": {
