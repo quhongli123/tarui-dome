@@ -81,9 +81,9 @@ jobs:
         if: ${{ github.ref_type == 'branch' }}
         run: |
           pnpm build --target ${{ matrix.target }}
-        env:
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        # env:
+        #   TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        #   TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
       - name: CI upload Windows x64
         if: ${{ github.ref_type == 'branch' && matrix.os == 'windows-latest' && matrix.target == 'x86_64-pc-windows-msvc' }}
@@ -132,12 +132,12 @@ jobs:
       - name: Tauri build
         uses: tauri-apps/tauri-action@v0
         if: ${{ github.ref_type == 'tag' }}
-        env:
-          CI: true
-          NODE_OPTIONS: '--max_old_space_size=4096'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        # env:
+        #   CI: true
+        #   NODE_OPTIONS: '--max_old_space_size=4096'
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        #   TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
           tagName: alpha
           releaseName: '${{ env.APP_NAME }} Alpha v__VERSION__'
@@ -252,10 +252,10 @@ jobs:
             export PKG_CONFIG_SYSROOT_DIR=/usr/arm-linux-gnueabihf/
           fi
           pnpm build --target ${{ matrix.target }}
-        env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        # env:
+        #   NODE_OPTIONS: '--max_old_space_size=4096'
+        #   TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        #   TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
       - name: CI upload Linux
         if: ${{ github.ref_type == 'branch' && matrix.os == 'ubuntu-22.04' }}
