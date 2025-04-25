@@ -1,3 +1,13 @@
+/*
+ * @Author: 曲洪利 quhongli999@163.com
+ * @Date: 2025-01-25 01:51:46
+ * @LastEditors: 曲洪利 quhongli999@163.com
+ * @LastEditTime: 2025-04-25 13:28:38
+ * @FilePath: /V2rayX-main/app/designs/icons/custom-icons.ts
+ * @Description:
+ *
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved.
+ */
 const customIconsDefinition: Record<string, string> = {
   h1: '<g fill="currentColor"><path d="M5 17V7h2.144v4.126h4.352V7h2.139v10h-2.139v-4.13H7.144V17H5ZM19.615 7v10h-2.143V9.007h-.06l-2.322 1.435V8.567L17.6 7h2.015Z"/></g>',
   'v2ray-logo':
@@ -5,8 +15,6 @@ const customIconsDefinition: Record<string, string> = {
 };
 
 export const customIcons = Object.fromEntries(
-  Object.entries(customIconsDefinition).map(([key, value]) => [
-    key,
-    { body: value },
-  ]),
+  Object.entries(customIconsDefinition).map(([key, value]) => [key, { body: value }]),
 );
+// sda
